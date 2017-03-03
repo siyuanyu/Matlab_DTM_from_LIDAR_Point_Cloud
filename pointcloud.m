@@ -2,6 +2,7 @@
 
 clear;
 
+ryan_path ='C:\Users\siyua\Desktop\final_project_data\final_project_point_cloud.fuse';
 jacob_path ='/Users/jdbruce/Downloads/WQ2017/Geospatial/HW3 and Final/Final Project/final_project_data/final_project_point_cloud.fuse';
 
 path = jacob_path;
