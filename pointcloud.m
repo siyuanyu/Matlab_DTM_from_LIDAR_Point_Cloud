@@ -26,3 +26,11 @@ scaledCloud = pointCloud(scaledPoints);
 
 min_pts = get_minimums(scaledCloud, 2);
 
+% surface = get_surface
+
+new_points = filter_by_surf(old_points, surface, tolerance);
+
+
+
+
+
