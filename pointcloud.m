@@ -28,13 +28,13 @@ pcshow(curr_cloud);
 
 % loop start conditions
 
-avg_err = Inf;
+avg_error = Inf;
 threshold = .25;
 box_size = 2;
 up_tol = 1;
 down_tol = 1;
 
-while avg_err > threshold
+while avg_error > threshold
 
     min_pts = get_minimums(curr_cloud, box_size);
     figure();
@@ -44,7 +44,7 @@ while avg_err > threshold
     figure();
     plot(fitobject);
 
-    [curr_points,avg_error] = filter_by_surf(curr_points, fitobject, 1, 1);
+    [curr_points,avg_error] = filter_by_surf(curr_points, fitobject, up_tol, down_tol);
     curr_cloud = pointCloud(curr_points);
     figure();
     pcshow(curr_cloud);  
