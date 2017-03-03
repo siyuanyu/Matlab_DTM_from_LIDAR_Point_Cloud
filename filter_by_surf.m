@@ -14,5 +14,5 @@ for ii = 1:size(old_points,1)
 
 end
 
-old_points(isnan(old_points)) = [];
+old_points(isnan(old_points(:,3)),:) = [];
 new_points = old_points;

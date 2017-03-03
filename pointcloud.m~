@@ -35,15 +35,17 @@ pcshow(pointCloud(min_pts));
 
 figure();
 
-[ fitobject, gof, output ] = fit_surface( min_pts(:,1), min_pts(:,2), min_pts(:,3), 'poly55');
+[ fitobject, gof, output ] = fit_surface( min_pts(:,1), min_pts(:,2), min_pts(:,3), 'poly77');
 
 plot(fitobject);
 
 figure();
 
-new_points = filter_by_surf(scaledPoints, fitobject, 2, 2);
+new_points = filter_by_surf(scaledPoints, fitobject, .5, .5);
 
 pcshow(pointCloud(new_points));
+
+figure();
 
 
 
