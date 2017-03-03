@@ -2,10 +2,9 @@
 
 clear;
 
-ryan_path = 'C:\Users\siyua\Desktop\final_project_data\final_project_point_cloud.fuse';
 jacob_path ='/Users/jdbruce/Downloads/WQ2017/Geospatial/HW3 and Final/Final Project/final_project_data/final_project_point_cloud.fuse';
 
-path = ryan_path;
+path = jacob_path;
 
 fileID = fopen(path,'r');
 formatSpec = '%f %f %f %f';
@@ -32,7 +31,7 @@ pcshow(curr_cloud);
 
 avg_err = Inf;
 threshold = .25;
-box_size = 0.5;
+box_size = 2;
 up_tol = 1;
 down_tol = 1;
 
@@ -53,7 +52,6 @@ while avg_err > threshold
     % resetting for new loop
     up_tol = up_tol / 2;
     down_tol = down_tol / 2;
-    curr_cloud = pointCloud(new_points);
 
 end
 
