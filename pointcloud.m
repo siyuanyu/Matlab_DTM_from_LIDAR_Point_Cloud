@@ -4,8 +4,9 @@ clear;
 
 ryan_path ='C:\Users\siyua\Desktop\final_project_data\final_project_point_cloud.fuse';
 jacob_path ='/Users/jdbruce/Downloads/WQ2017/Geospatial/HW3 and Final/Final Project/final_project_data/final_project_point_cloud.fuse';
+derek_path = 'C:\Users\derek_000\Documents\Northwestern Work 2\EECS 495 Geospatial Project\final_project_data\final_project_point_cloud.fuse';
 
-path = jacob_path;
+path = derek_path;
 
 fileID = fopen(path,'r');
 formatSpec = '%f %f %f %f';
@@ -58,3 +59,6 @@ while avg_error > threshold
 
 end
 
+% Linear Interpolation
+[fitresult, gof] = createFit(curr_points(:,1), curr_points(:,2), curr_points(:,3));
+[X,Y,raster] = plot_raster(init_cloud, fitresult, 1);
