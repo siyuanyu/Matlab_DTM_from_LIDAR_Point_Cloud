@@ -10,18 +10,22 @@ fileID = fopen(path,'r');
 formatSpec = '%f %f %f %f';
 sizexyz = [4 Inf];
 
+% get the initial lat lon points by scanning from file
+
 xyzPoints = fscanf(fileID,formatSpec, sizexyz).';
 xyzPoints = xyzPoints(:,1:3);
-
 ptCloud = pointCloud(xyzPoints);
-xlims = ptCloud.XLimits;
-ylims = ptCloud.YLimits;
-zlims = ptCloud.ZLimits;
+% xlims = ptCloud.XLimits;
+% ylims = ptCloud.YLimits;
+% zlims = ptCloud.ZLimits;
+
+% get x,y,z coordinates in meters from 0,0,0
 
 curr_points = coords_from_lat_lon(xyzPoints, ptCloud);
-curr_cloud = pointCloud(scaledPoints);
-
+curr_cloud = pointCloud(curr_points);
 pcshow(curr_cloud);
+
+% loop start conditions
 
 avg_err = Inf;
 threshold = .25;
