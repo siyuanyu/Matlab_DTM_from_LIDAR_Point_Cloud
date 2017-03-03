@@ -16,6 +16,7 @@ sizexyz = [4 Inf];
 xyzPoints = fscanf(fileID,formatSpec, sizexyz).';
 xyzPoints = xyzPoints(:,1:3);
 ptCloud = pointCloud(xyzPoints);
+pcshow(ptCloud);
 % xlims = ptCloud.XLimits;
 % ylims = ptCloud.YLimits;
 % zlims = ptCloud.ZLimits;
@@ -24,12 +25,13 @@ ptCloud = pointCloud(xyzPoints);
 
 curr_points = coords_from_lat_lon(xyzPoints, ptCloud);
 curr_cloud = pointCloud(curr_points);
+init_cloud = curr_cloud;
 pcshow(curr_cloud);
 
 % loop start conditions
 
 avg_error = Inf;
-threshold = .25;
+threshold = .1;
 box_size = 2;
 up_tol = 1;
 down_tol = 1;
@@ -52,7 +54,7 @@ while avg_error > threshold
     % resetting for new loop
     up_tol = up_tol / 2;
     down_tol = down_tol / 2;
-    
+    box_size = box_size / 2;
 
 end
 
