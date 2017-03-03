@@ -10,24 +10,22 @@ fileID = fopen(path,'r');
 formatSpec = '%f %f %f %f';
 sizexyz = [4 Inf];
 
+% get the initial lat lon points by scanning from file
+
 xyzPoints = fscanf(fileID,formatSpec, sizexyz).';
 xyzPoints = xyzPoints(:,1:3);
-
 ptCloud = pointCloud(xyzPoints);
-xlims = ptCloud.XLimits;
-ylims = ptCloud.YLimits;
-zlims = ptCloud.ZLimits;
+% xlims = ptCloud.XLimits;
+% ylims = ptCloud.YLimits;
+% zlims = ptCloud.ZLimits;
 
-scaledPoints = coords_from_lat_lon(xyzPoints, ptCloud);
-% scaledPoints = zeros(ptCloud.Count, 3);
-% 
-% scaledPoints(:,1) = 100.*(xyzPoints(:,1) - xlims(1))./(xlims(2)-xlims(1));
-% scaledPoints(:,2) = 100.*(xyzPoints(:,2) - ylims(1))./(ylims(2)-ylims(1));
-% scaledPoints(:,3) = 25.*(xyzPoints(:,3) - zlims(1))./(zlims(2)-zlims(1));
-% 
-curr_cloud = pointCloud(scaledPoints);
+% get x,y,z coordinates in meters from 0,0,0
 
+curr_points = coords_from_lat_lon(xyzPoints, ptCloud);
+curr_cloud = pointCloud(curr_points);
 pcshow(curr_cloud);
+
+% loop start conditions
 
 avg_err = Inf;
 threshold = .25;
@@ -45,17 +43,15 @@ while avg_err > threshold
     figure();
     plot(fitobject);
 
-    [new_points,avg_error] = filter_by_surf(scaledPoints, fitobject, 1, 1);
+    [curr_points,avg_error] = filter_by_surf(curr_points, fitobject, 1, 1);
+    curr_cloud = pointCloud(curr_points);
     figure();
-    pcshow(pointCloud(new_points));
+    pcshow(curr_cloud);  
     
     % resetting for new loop
     up_tol = up_tol / 2;
     down_tol = down_tol / 2;
+    
 
 end
-
-
-
-
 
