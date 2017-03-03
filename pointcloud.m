@@ -22,5 +22,7 @@ scaledPoints = coords_from_lat_lon(xyzPoints, ptCloud);
 % scaledPoints(:,3) = 25.*(xyzPoints(:,3) - zlims(1))./(zlims(2)-zlims(1));
 % 
 scaledCloud = pointCloud(scaledPoints);
+% pcshow(scaledCloud);
 
-pcshow(scaledCloud);
+min_pts = get_minimums(scaledCloud, 2);
+
