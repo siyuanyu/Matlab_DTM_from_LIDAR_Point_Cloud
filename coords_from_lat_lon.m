@@ -1,5 +1,6 @@
 function coords = coords_from_lat_lon(points, ptCloud)
-
+% converts lat/lon data to distance in meters
+% lowest xyz points are 0,0,0
 % input: xyzPoints, Mx3, lat lon elev
 % output:  Mx3, x y z in meters
 

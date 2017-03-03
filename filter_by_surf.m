@@ -1,4 +1,13 @@
 function [new_points, avg_error] = filter_by_surf(old_points,surface,tol_positive,tol_negative)
+% filters by a threshold around a surface
+% inputs: old points, a Mx3 array of x, y, z values
+%         surface, a fitobject representing a 3D surface fit to those
+%         values
+%         tolerance positive and negative, the distance from that surface
+%         that 'inliers' are accepted
+% outputs: new points, a Nx3 array where N < M, xyz values
+%          avg_error, the average error of new points to the surface
+
 
 agg_error = 0;
 

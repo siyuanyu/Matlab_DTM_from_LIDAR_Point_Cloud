@@ -1,10 +1,16 @@
-% point cloud playing script
+% pointcloud.m
+% Derek Oung, Ryan Yu, Will Molter, Jacob Bruce
+% Geospatial Vision and Visualization Final Project
+% Winter Quarter 2017, 3/3/17
+% Script uses a path to a point cloud of a car driving on a road to
+% determine a DEM of the road surface
 
 clear;
 
+% setting up reader to point cloud fuse file
+
 ryan_path ='C:\Users\siyua\Desktop\final_project_data\final_project_point_cloud.fuse';
 jacob_path ='/Users/jdbruce/Downloads/WQ2017/Geospatial/HW3 and Final/Final Project/final_project_data/final_project_point_cloud.fuse';
-
 path = jacob_path;
 
 fileID = fopen(path,'r');
@@ -17,9 +23,6 @@ xyzPoints = fscanf(fileID,formatSpec, sizexyz).';
 xyzPoints = xyzPoints(:,1:3);
 ptCloud = pointCloud(xyzPoints);
 pcshow(ptCloud);
-% xlims = ptCloud.XLimits;
-% ylims = ptCloud.YLimits;
-% zlims = ptCloud.ZLimits;
 
 % get x,y,z coordinates in meters from 0,0,0
 
@@ -57,4 +60,6 @@ while avg_error > threshold
     box_size = box_size / 2;
 
 end
+
+
 
