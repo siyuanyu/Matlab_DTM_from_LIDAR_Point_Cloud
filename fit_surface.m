@@ -7,7 +7,7 @@ function [ fitobject, gof, output ] = fit_surface( x, y, z, char )
 % z z location
 
 fo = fitoptions('Method', 'LinearLeastSquares', ...
-    'Robust', 'on');
+    'Robust', 'Bisquare');
 ft = (char);
 [fitobject, gof, output] = fit([x, y], z, ft, fo);
 
