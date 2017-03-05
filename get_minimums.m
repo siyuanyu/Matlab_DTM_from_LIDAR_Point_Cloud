@@ -35,7 +35,5 @@ for i_x = 1:num_x_boxes
 end
 
 min_pts = minimums_list(1:mins_index-1, :);
-mins_ptcloud = pointCloud(min_pts);
-pcshow(mins_ptcloud)
 
 end
