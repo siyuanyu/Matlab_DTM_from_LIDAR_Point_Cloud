@@ -17,9 +17,14 @@ for ii = 1:size(X,1)
     end
 end
 
-figure()
+figure('Name','Final Raster with Point Cloud','NumberTitle','off')
 pcshow(init_cloud)
 hold on
+surf(X,Y,Z)
+axis equal
+
+hold off;
+figure('Name','Final Raster','NumberTitle','off')
 surf(X,Y,Z)
 axis equal
 

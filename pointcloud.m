@@ -5,8 +5,8 @@ clear;
 ryan_path ='C:\Users\siyua\Desktop\final_project_data\final_project_point_cloud.fuse';
 jacob_path ='/Users/jdbruce/Downloads/WQ2017/Geospatial/HW3 and Final/Final Project/final_project_data/final_project_point_cloud.fuse';
 derek_path = 'C:\Users\derek_000\Documents\Northwestern Work 2\EECS 495 Geospatial Project\final_project_data\final_project_point_cloud.fuse';
-
-path = derek_path;
+will_path = 'C:\Users\Will Molter\Documents\College\Winter 2017\EECS 395\proj4\final_project_data\final_project_point_cloud.fuse';
+path = will_path;
 
 fileID = fopen(path,'r');
 formatSpec = '%f %f %f %f';
